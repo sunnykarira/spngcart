@@ -1,42 +1,18 @@
 {>"layouts/master" /}
 
 {<body}
-	<div class="large-3 columns book">
-		<img src = "/img/node1.jpg">
-		<h4> Professional Node.js</h4>
-		<p> dui id enim blandit rutrum eget nec metus. Curabitur at </p>
-		<div class="price"> Buy it for <span>Rs. 200.99</span></div>
-		<br>
-		<a href="/books/details/1" class="button small">Book Details</a>
-
-	</div>
-
-	<div class="large-3 columns book">
-		<img src = "/img/node2.jpg">
-		<h4> Professional Node.js</h4>
-		<p> dui id enim blandit rutrum eget nec metus. Curabitur at </p>
-		<div class="price"> Buy it for <span>Rs. 200.99</span></div>
-		<br>
-		<a href="/books/details/1" class="button small">Book Details</a>
-
-	</div>
-	<div class="large-3 columns book">
-		<img src = "/img/node3.jpg">
-		<h4> Professional Node.js</h4>
-		<p> dui id enim blandit rutrum eget nec metus. Curabitur at </p>
-		<div class="price"> Buy it for <span>Rs. 200.99</span></div>
-		<br>
-		<a href="/books/details/1" class="button small">Book Details</a>
-
-	</div>
-	<div class="large-3 columns book">
-		<img src = "/img/node4.jpg">
-		<h4> Professional Node.js</h4>
-		<p> dui id enim blandit rutrum eget nec metus. Curabitur at</p>
-		<div class="price"> Buy it for <span>Rs. 200.99</span></div>
-		<br>
-		<a href="/books/details/1" class="button small">Book Details</a>
-
-	</div>
     
+    <!-- Loop -->
+    {#books}
+        <div class="large-3 columns book">
+            <img src="/img/{.cover}">
+            <h4>{.title}</h4>
+            <p>
+                {.truncText}
+            </p>
+            <div class="price">Buy it for <span>${.price}</span></div>
+            <br/>
+            <a href="/books/details/{._id}" class="button small">Book Details</a>
+        </div>
+    {/books}
 {/body}
