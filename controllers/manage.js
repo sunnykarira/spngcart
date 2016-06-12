@@ -9,8 +9,12 @@ module.exports = function (router) {
         
     });
 
-    router.get('/details/:id', function(req, res){
-    	res.render('books/details');
+    router.get('/books', function(req, res){
+    	res.render('manage/books/index');
+    });
+
+    router.get('/categories', function(req, res){
+    	res.render('manage/categories/index');
     });
 
 };
