@@ -1,6 +1,7 @@
 'use strict';
 
 var Book = require('../models/bookModel');
+var Category = require('../models/categoryModel');
 
 
 module.exports = function (router) {
@@ -11,6 +12,9 @@ module.exports = function (router) {
 	    	if(err){
 	    		console.log(err);
 	    	}
+	    	books.forEach(function(book){
+	    		book.truncText = book.truncText(50);
+	    	});
 	    	var model = {
 	    		books: books
 	    	}
