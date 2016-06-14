@@ -4,6 +4,9 @@ var express = require('express');
 var kraken = require('kraken-js');
 var db = require('./lib/db');
 var flash = require('connect-flash');
+var dust = require('dustjs-linkedin');
+var cons = require('consolidate');
+
 
 
 var options, app;
@@ -26,9 +29,9 @@ options = {
 app = module.exports = express();
 app.use(kraken(options));
 
-
-app.set('view engine', 'dust');
+app.set('view engine', 'dustjs-linkedin');
 app.set('views', __dirname + '/public/templates');
+app.engine('dust', cons.dust);
 
 // Connect Flash
 app.use(flash());

@@ -12,6 +12,7 @@
   "dependencies": {
     "adaro": "^0.1.10",
     "connect-flash": "^0.1.1",
+    "consolidate": "^0.14.1",
     "construx": "^1.0.0",
     "construx-copier": "^1.0.0",
     "construx-dustjs-i18n": "^1.0.1",
