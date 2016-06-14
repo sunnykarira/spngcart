@@ -26,6 +26,12 @@ options = {
 app = module.exports = express();
 app.use(kraken(options));
 
+// assign the dust engine to .dust files
+app.engine('dust', cons.dust);
+
+app.set('view engine', 'dust');
+app.set('views', __dirname + '/public/templates');
+
 // Connect Flash
 app.use(flash());
 app.use(function(req, res, next){
