@@ -89,4 +89,67 @@ module.exports = function (router) {
 
     });
 
+    // Display Book Edit Form
+    router.get('/books/edit/:id', function(req, res){
+        Category.find({}, function(err, categories){
+            Book.findOne({_id:req.params.id}, function(err, book){
+                if(err){
+                    console.log(err);
+                }
+
+                var model = {
+                    book: book,
+                    categories: categories
+                };
+
+                res.render('manage/books/edit', model);
+            });
+        });
+    });
+
+     // Edit Book
+    router.post('/books/edit/:id', function(req, res){
+
+        var title =  req.body.title && req.body.title.trim();
+        var category = req.body.category && req.body.category.trim();
+        var author = req.body.author && req.body.author.trim();
+        var publisher = req.body.publisher && req.body.publisher.trim();
+        var price = req.body.price && req.body.price.trim();
+        var description = req.body.description && req.body.description.trim();
+        var cover = req.body.cover && req.body.cover.trim();
+
+        Book.update({_id: req.params.id},{
+            title: title,
+            category: category,
+            author: author,
+            publisher: publisher,
+            price: price,
+            description: description,
+            cover: cover
+        }, function(err){
+            if(err){
+                console.log('update book error', err);
+            }
+
+            req.flash('success', 'Book Updated');
+            res.location('/manage/books');
+            res.redirect('/manage/books');
+            });
+    });
+
+    // Delete Book
+    router.get('/books/delete/:id', function(req, res){
+
+        Book.remove({_id: req.params.id}, function(err){
+            if(err){
+                console.log('delete book error', err);
+            }
+
+            req.flash('success', 'Book Deleted');
+            res.location('/manage/books');
+            res.redirect('/manage/books');
+        });
+    });
+
+
 };
