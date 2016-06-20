@@ -152,4 +152,83 @@ module.exports = function (router) {
     });
 
 
+    // Display category add Form
+    router.get('/categories/add', function(req, res){
+        res.render('manage/categories/add');
+    });
+
+    // Add a new Category
+    router.post('/categories', function(req, res){
+        var name = req.body.name && req.body.name.trim();
+
+        if (name == ''){
+            req.flash('error', 'Please fill out required field');
+            res.location('/manage/categories/add');
+            res.redirect('/manage/categories/add');
+        }
+
+        var newCategory = new Category({
+            name: name
+        });
+
+        newCategory.save(function(err){
+            if(err){
+                console.log('save new category error', err);
+            }
+
+            req.flash('success', 'Category Added');
+            res.location('/manage/categories');
+            res.redirect('/manage/categories');
+        });
+    });
+
+    // Display Category Edit Form
+    router.get('/categories/edit/:id', function(req, res){
+            Category.findOne({_id:req.params.id}, function(err, category){
+                if(err){
+                    console.log(err);
+                }
+
+                var model = {
+                    category: category
+                };
+
+                res.render('manage/categories/edit', model);
+            });
+        });
+
+   // Edit Book
+    router.post('/categories/edit/:id', function(req, res){
+
+        var name =  req.body.name && req.body.name.trim();
+
+        Category.update({_id: req.params.id},{
+            name: name
+        }, function(err){
+            if(err){
+                console.log('update category error', err);
+            }
+
+            req.flash('success', 'Category Updated');
+            res.location('/manage/categories');
+            res.redirect('/manage/categories');
+        });
+    });
+
+
+    // Delete Category
+    router.get('/categories/delete/:id', function(req, res){
+
+        Category.remove({_id: req.params.id}, function(err){
+            if(err){
+                console.log('delete category error', err);
+            }
+
+            req.flash('success', 'Category Deleted');
+            res.location('/manage/categories');
+            res.redirect('/manage/categories');
+        });
+    });
+
+
 };
