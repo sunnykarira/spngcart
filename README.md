@@ -57,10 +57,10 @@ Client End
 ![Application](/img/1.bmp?raw=true)
 
 Admin End
-![Application](/img/2.png?raw=true)
-![Application](/img/3.png?raw=true)
-![Application](/img/4.png?raw=true)
-![Application](/img/5.png?raw=true)
+![Application](/img/2.bmp?raw=true)
+![Application](/img/3.bmp?raw=true)
+![Application](/img/4.bmp?raw=true)
+![Application](/img/5.bmp?raw=true)
 
 
 
