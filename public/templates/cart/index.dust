@@ -46,7 +46,7 @@
                             <!-- Item ID -->
                             <input type="hidden" name="item_number" value="1">
                             <!-- Currency Code -->
-                            <input type="hidden" name="currency_code" value="INR">
+                            <input type="hidden" name="currency_code" value="USD">
                             <!-- Price -->
                             <input type="hidden" name="amount" value="{cart.total}">
                             <!-- Specify Shipping -->
